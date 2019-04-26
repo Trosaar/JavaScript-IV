@@ -30,7 +30,9 @@ class Instructor extends Person {
 
   score(student) {
     student.grade = student.grade + (Math.floor(Math.random() * 15) -5);
-    console.log(`${this.name} has graded an assignment for ${student.name}. The student's new grade is ${student.grade}.`);
+    if (student.grade < 71) {
+          console.log(`${this.name} has graded an assignment for ${student.name}. The student's new grade is ${student.grade}.`);
+    }
   }
 }
 
@@ -57,7 +59,7 @@ class Student extends Person {
 
   graduate(){
     if (this.grade > 70) {
-      console.log(`${this.name} has a grade high enough to graduate!`);
+      console.log(`${this.name} has a grade of ${this.grade} and can graduate!`);
     } /*else {
       console.log(`${this.name} needs to practice more before they can graduate.`);
     }*/
@@ -188,6 +190,10 @@ aaron.sprintChallenge("React");
 abdul.standUp("our channel");
 ari.debugsCode(justin, "prototypes");
 
+ari.score(aaron);
+aaron.graduate();
+ari.score(aaron);
+aaron.graduate();
 ari.score(aaron);
 aaron.graduate();
 ari.score(aaron);
