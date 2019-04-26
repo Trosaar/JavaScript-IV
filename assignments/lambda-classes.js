@@ -27,6 +27,11 @@ class Instructor extends Person {
   grade(student, subject) {
     console.log(`${student.name} receives a perfect score on ${subject}`);
   }
+
+  score(student) {
+    student.grade = student.grade + (Math.floor(Math.random() * 15) -5);
+    console.log(`${this.name} has graded an assignment for ${student.name}. The student's new grade is ${student.grade}.`);
+  }
 }
 
 class Student extends Person {
@@ -35,6 +40,7 @@ class Student extends Person {
     this.previousBackground = info.previousBackground;
     this.className = info.className;
     this.favSubjects = info.favSubjects;
+    this.grade = info.grade;
   }
 
   listsSubjects() {
@@ -47,6 +53,14 @@ class Student extends Person {
 
   sprintChallenge(subject) {
     console.log(`${this.name} has begun spring challenge on ${subject}.`);
+  }
+
+  graduate(){
+    if (this.grade > 70) {
+      console.log(`${this.name} has a grade high enough to graduate!`);
+    } /*else {
+      console.log(`${this.name} needs to practice more before they can graduate.`);
+    }*/
   }
 }
 
@@ -112,7 +126,8 @@ const aaron = new Student({
   gender: "male",
   previousBackground: "International Business",
   className: "WebPT6",
-  favSubjects: "all subjects. Learning is great."
+  favSubjects: "all subjects. Learning is great.",
+  grade: 50
 });
 
 const justin = new Student({
@@ -123,6 +138,7 @@ const justin = new Student({
   previousBackground: "not sure",
   className: "WebPT6",
   favSubjects: ['Html', 'CSS', 'JavaScript'],
+  grade: 50
 });
 
 /* ProjectManager extends Instructor
@@ -171,3 +187,16 @@ aaron.PRAssignment("JavaScript");
 aaron.sprintChallenge("React");
 abdul.standUp("our channel");
 ari.debugsCode(justin, "prototypes");
+
+ari.score(aaron);
+aaron.graduate();
+ari.score(aaron);
+aaron.graduate();
+ari.score(aaron);
+aaron.graduate();
+ari.score(aaron);
+aaron.graduate();
+ari.score(aaron);
+aaron.graduate();
+ari.score(aaron);
+aaron.graduate();
